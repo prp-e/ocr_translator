@@ -7,7 +7,7 @@ pytesseract_config = r'--oem 2'
 image = cv2.imread("images/street.jpg")
 image_processed = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-image_data = pytesseract.image_to_data(image_processed)
+image_data = pytesseract.image_to_data(image_processed, config=pytesseract_config)
 
 for count, datum in enumerate(image_data.splitlines()):
     if count != 0:
