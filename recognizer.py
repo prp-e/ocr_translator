@@ -2,7 +2,7 @@ import cv2
 import pytesseract 
 
 pytesseract.pytesseract.tesseract_cmd = '/usr/local/bin/tesseract'
-pytesseract_config = r'--oem 2'
+pytesseract_config = r'--oem 1'
 
 image = cv2.imread("images/street.jpg")
 image_processed = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
