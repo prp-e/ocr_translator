@@ -4,7 +4,7 @@ import pytesseract
 pytesseract.pytesseract.tesseract_cmd = '/usr/local/bin/tesseract'
 pytesseract_config = r'--oem 1'
 
-image = cv2.imread("images/street.jpg")
+image = cv2.imread("images/ny.jpg")
 image_processed = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 image_data = pytesseract.image_to_data(image_processed, config=pytesseract_config)
