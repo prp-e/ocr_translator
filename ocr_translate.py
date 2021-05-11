@@ -2,10 +2,7 @@
 
 from flask.globals import request
 import cv2 
-import easyocr
-import numpy as np
-import requests
-import sys 
+import easyocr 
 import time 
 
 camera = cv2.VideoCapture(0) 
