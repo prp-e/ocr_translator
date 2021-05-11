@@ -18,3 +18,10 @@ if sys.platform == 'darwin':
 
     else: 
         ssl._create_default_https_context = _create_unverified_https_context
+
+""" Main code """ 
+
+import cv2 
+import easyocr 
+
+reader = easyocr.Reader(['en'], gpu=False)
