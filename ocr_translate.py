@@ -15,12 +15,7 @@ print(f'FPS : {fps}')
 while True:
     _, image = camera.read()
     cv2.imshow('Camera', image)
-    time.sleep(.005)
-    image = image.tolist()
-    image_json = {'image': image}
-    r = requests.post('http://localhost:5000', json=image_json)
-    print(r.text)
-    time.sleep(.1)
+    time.sleep(.5)
     exit = cv2.waitKey(30) & 0xff
     if exit == 27:
         break 
