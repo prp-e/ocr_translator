@@ -26,6 +26,7 @@ while True:
     
     time.sleep(.75)
     cv2.imshow('Camera', image)
+    print(text)
     exit = cv2.waitKey(30) & 0xff
     if exit == 27:
         break 
