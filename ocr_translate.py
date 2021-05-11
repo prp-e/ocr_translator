@@ -15,7 +15,7 @@ print(f'FPS : {fps}')
 while True:
     _, image = camera.read()
     cv2.imshow('Camera', image)
-    time.sleep(.05)
+    time.sleep(.005)
     image = image.tolist()
     image_json = {'image': image}
     r = requests.post('http://localhost:5000', json=image_json)
