@@ -1,6 +1,4 @@
 """ Main code """ 
-
-from flask.globals import request
 import cv2 
 import easyocr 
 import time 
