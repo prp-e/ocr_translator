@@ -15,6 +15,7 @@ print(f'FPS : {fps}')
 while True:
     _, image = camera.read()
     cv2.imshow('Camera', image)
+    cv2.imwrite('output.jpg', image)
     time.sleep(.5)
     exit = cv2.waitKey(30) & 0xff
     if exit == 27:
