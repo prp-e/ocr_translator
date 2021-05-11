@@ -33,9 +33,7 @@ app = Flask(__name__)
 def magic():
     json_input = request.get_json()
     image = np.array(json_input['image'])
-    image_input = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    image_data = reader.readtext(image_input)
-    print(image_data)
+    cv2.imwrite('output.jpg', image)
     return {'output': 0}
 
 if __name__ == '__main__':
