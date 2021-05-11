@@ -10,6 +10,7 @@ import time
 camera = cv2.VideoCapture(0)
 while True:
     _, image = camera.read()
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     cv2.imshow('Camera', image)
     time.sleep(.5)
     image = image.tolist()
