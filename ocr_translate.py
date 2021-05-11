@@ -23,7 +23,7 @@ if sys.platform == 'darwin':
 
 import cv2 
 import easyocr 
-import time 
+import requests
 
 reader = easyocr.Reader(['en'], gpu=False)
 camera = cv2.VideoCapture(0)
@@ -31,9 +31,6 @@ camera = cv2.VideoCapture(0)
 while True:
     _, image = camera.read()
     cv2.imshow('Camera', image)
-    #image_data = reader.readtext(image)
-    #print(image_data)
-    print(image)
     exit = cv2.waitKey(30) & 0xff
     if exit == 27:
         break 
