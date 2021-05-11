@@ -9,7 +9,7 @@ camera = cv2.VideoCapture(1)
 reader = easyocr.Reader(['en'], gpu=False)
 
 async def read_image_data(image):
-    image_data = await reader.readtext('output.jpg')
+    image_data = await reader.readtext(image)
     for datum in image_data:
         coordinates, text, confidence = datum 
         top_left = (int(coordinates[0][0]), int(coordinates[0][1]))
