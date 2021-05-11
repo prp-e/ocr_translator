@@ -4,6 +4,7 @@ from flask.globals import request
 import cv2 
 import numpy as np
 import requests
+import sys 
 import time 
 
 camera = cv2.VideoCapture(0) 
