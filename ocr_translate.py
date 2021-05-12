@@ -25,7 +25,7 @@ async def main():
     while True:
         _, image = camera.read()
         await read_image_data(image)
-        time.sleep(.05)
+        #time.sleep(.05)
         cv2.imshow('Camera', image)
         exit = cv2.waitKey(30) & 0xff
         if exit == 27:
