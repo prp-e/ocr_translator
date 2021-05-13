@@ -5,7 +5,7 @@ import easyocr
 import time 
 
 """ Global Variables """
-camera = cv2.VideoCapture(1) 
+camera = cv2.VideoCapture(0) 
 reader = easyocr.Reader(['en'], gpu=False)
 
 def read_image_data(image):
@@ -24,10 +24,10 @@ print(f'FPS : {fps}')
 
 while True:
     _, image = camera.read()
-    read_image_data(image)
+    #read_image_data(image)
     #time.sleep(.05)
     cv2.imshow('Camera', image)
     exit = cv2.waitKey(30) & 0xff
-    if exit == 27:
+    if exit == 32:
         break 
 
