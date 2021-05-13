@@ -1,5 +1,5 @@
 """ Main code """ 
-import asyncio
+
 import cv2 
 import easyocr 
 import time 
@@ -8,8 +8,8 @@ import time
 camera = cv2.VideoCapture(1) 
 reader = easyocr.Reader(['en'], gpu=False)
 
-async def read_image_data(image):
-    image_data = reader.readtext(image)
+def read_image_data(image):
+    image_data = reader.readtext(image, workers=1)
     texts = []
     for datum in image_data:
         coordinates, text, confidence = datum 
@@ -17,19 +17,17 @@ async def read_image_data(image):
         bottom_right = (int(coordinates[2][0]), int(coordinates[2][1]))
         cv2.rectangle(image, top_left, bottom_right, (0, 255, 0), 5) 
 
-async def main():
-    fps = camera.get(cv2.CAP_PROP_FPS)
-    fps = int(fps) + 1
-    print(f'FPS : {fps}')
 
-    while True:
-        _, image = camera.read()
-        await read_image_data(image)
-        #time.sleep(.05)
-        cv2.imshow('Camera', image)
-        exit = cv2.waitKey(30) & 0xff
-        if exit == 27:
-            break 
+fps = camera.get(cv2.CAP_PROP_FPS)
+fps = int(fps) + 1
+print(f'FPS : {fps}')
 
-if __name__ == '__main__':
-    asyncio.run(main())
+while True:
+    _, image = camera.read()
+    read_image_data(image)
+    #time.sleep(.05)
+    cv2.imshow('Camera', image)
+    exit = cv2.waitKey(30) & 0xff
+    if exit == 27:
+        break 
+
