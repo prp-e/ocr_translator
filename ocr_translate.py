@@ -2,6 +2,7 @@
 
 import cv2 
 import easyocr 
+import googletrans
 import time 
 
 def read_image_data(image, text_reader):
@@ -29,8 +30,10 @@ def camera_data(camera):
     cv2.destroyAllWindows()
 
 def translation(texts):
+    translator = googletrans.Translator()
     for text in texts:
-        print(text)
+        translation = translator.translate(text, dest="fa")
+        print(f'{text} : {translation.text}')
 
 if __name__ == '__main__':
     """ Global Variables """
@@ -47,10 +50,11 @@ if __name__ == '__main__':
     image_to_recognize = cv2.imread(file_name)
     text_data = read_image_data(image_to_recognize, reader)
 
+    translation(text_data)
+
     cv2.imshow('Result', image_to_recognize)
+    
     exit_key = cv2.waitKey(0) & 0xff
     if exit_key == ord('q'):
         cv2.destroyAllWindows()
     
-
-    print(text_data)
