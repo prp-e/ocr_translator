@@ -20,6 +20,7 @@ def camera_data(camera):
         exit = cv2.waitKey(30) & 0xff
         if exit == 32:
             cv2.imwrite(file_name, image)
+            cv2.destroyAllWindows()
             break
 
 if __name__ == '__main__':
