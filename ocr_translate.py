@@ -7,6 +7,10 @@ import time
 """ Global Variables """
 camera = cv2.VideoCapture(0) 
 reader = easyocr.Reader(['en'], gpu=False)
+file_name = 'photo_taken.jpg'
+fps = camera.get(cv2.CAP_PROP_FPS)
+fps = int(fps) + 1
+print(f'FPS : {fps}')
 
 def read_image_data(image):
     image_data = reader.readtext(image, workers=1)
@@ -18,10 +22,6 @@ def read_image_data(image):
         cv2.rectangle(image, top_left, bottom_right, (0, 255, 0), 5) 
 
 
-fps = camera.get(cv2.CAP_PROP_FPS)
-fps = int(fps) + 1
-print(f'FPS : {fps}')
-
 while True:
     _, image = camera.read()
     #read_image_data(image)
@@ -29,5 +29,11 @@ while True:
     cv2.imshow('Camera', image)
     exit = cv2.waitKey(30) & 0xff
     if exit == 32:
-        break 
+        cv2.imwrite(file_name, image)
+        break
+
+cv2.destroyAllWindows()
+print('Working on your image')
+image_to_recognize = cv2.imread(file_name)
+cv2.imshow('Result', image_to_recognize)
 
