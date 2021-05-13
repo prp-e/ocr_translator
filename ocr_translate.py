@@ -9,9 +9,13 @@ def read_image_data(image, text_reader):
     texts = []
     for datum in image_data:
         coordinates, text, confidence = datum 
+        print(f'Found {text}')
+        texts.append(text)
         top_left = (int(coordinates[0][0]), int(coordinates[0][1]))
         bottom_right = (int(coordinates[2][0]), int(coordinates[2][1]))
         cv2.rectangle(image, top_left, bottom_right, (0, 255, 0), 5) 
+    
+    return texts
 
 def camera_data(camera):
     while True:
@@ -35,8 +39,10 @@ if __name__ == '__main__':
     print(f'FPS : {fps}')
 
     camera_data(camera=camera)
+    time.sleep(5)
+    
     image_to_recognize = cv2.imread(file_name)
-    read_image_data(image_to_recognize, reader)
+    text_data = read_image_data(image_to_recognize, reader)
 
     cv2.imshow('Result', image_to_recognize)
     exit_key = cv2.waitKey(0) & 0xff
