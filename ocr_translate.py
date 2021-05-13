@@ -40,7 +40,7 @@ if __name__ == '__main__':
 
     camera_data(camera=camera)
     time.sleep(5)
-    
+
     image_to_recognize = cv2.imread(file_name)
     text_data = read_image_data(image_to_recognize, reader)
 
@@ -48,4 +48,6 @@ if __name__ == '__main__':
     exit_key = cv2.waitKey(0) & 0xff
     if exit_key == ord('q'):
         cv2.destroyAllWindows()
-        exit()
+    
+
+    print(text_data)
