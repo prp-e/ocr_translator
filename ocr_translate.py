@@ -9,7 +9,6 @@ def read_image_data(image, text_reader):
     texts = []
     for datum in image_data:
         coordinates, text, confidence = datum 
-        print(f'Found {text}')
         texts.append(text)
         top_left = (int(coordinates[0][0]), int(coordinates[0][1]))
         bottom_right = (int(coordinates[2][0]), int(coordinates[2][1]))
@@ -28,6 +27,10 @@ def camera_data(camera):
 
     camera.release()
     cv2.destroyAllWindows()
+
+def translation(texts):
+    for text in texts:
+        print(text)
 
 if __name__ == '__main__':
     """ Global Variables """
