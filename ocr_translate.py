@@ -21,8 +21,9 @@ def camera_data(camera):
         if exit == 32:
             cv2.imwrite(file_name, image)
             break
-        
+
     camera.release()
+    cv2.destroyAllWindows()
 
 if __name__ == '__main__':
     """ Global Variables """
