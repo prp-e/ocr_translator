@@ -4,7 +4,7 @@ import cv2
 import easyocr 
 import time 
 
-def read_image_data(image):
+def read_image_data(image, text_reader):
     image_data = reader.readtext(image, workers=1)
     texts = []
     for datum in image_data:
@@ -35,6 +35,11 @@ if __name__ == '__main__':
     print(f'FPS : {fps}')
 
     camera_data(camera=camera)
-
     image_to_recognize = cv2.imread(file_name)
+    read_image_data(image_to_recognize, reader)
+
     cv2.imshow('Result', image_to_recognize)
+    exit_key = cv2.waitKey(0) & 0xff
+    if exit_key == ord('q'):
+        cv2.destroyAllWindows()
+        exit()
